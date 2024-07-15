@@ -81,7 +81,7 @@ jobs:
           mkdir public
           mv .github/workflows/index.html ./public/index.html
           cd public
-          branches=$(echo '${{ needs.build_matrix.outputs.dir }}' | jq -r '.[]')
+          branches=$(echo '${{ needs.directories.outputs.dir }}' | jq -r '.[]')
           echo $branches
           i=0
           for branch in ${branches}
