@@ -56,7 +56,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ strategy.job-index }}
-          path: dist/${{matrix.dir}}
+          path: ${{matrix.dir}}
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
