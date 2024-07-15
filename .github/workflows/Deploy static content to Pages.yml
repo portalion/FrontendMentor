@@ -56,7 +56,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ strategy.job-index }}
-          path: ${{matrix.dir}}/dist/
+          path: dist/
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
@@ -86,7 +86,7 @@ jobs:
           for branch in ${branches}
           do
             mkdir -p -- $branch
-            mv ../branches/$i/* ./$branch
+            mv ../$i/* ./$branch
 
             echo "<li><a href=\"./CV/${branch}\">${branch}</a></li>" >> index.html
 
