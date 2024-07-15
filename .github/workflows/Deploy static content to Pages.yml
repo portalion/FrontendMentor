@@ -72,7 +72,7 @@ jobs:
           fetch-depth: 0
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - run: gh run download ${{ vars.GITHUB_RUN_ID }} --dir branches
+      - run: gh run download ${{ vars.GITHUB_RUN_ID }} --dir projects
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -81,13 +81,12 @@ jobs:
           mkdir public
           mv .github/workflows/index.html ./public/index.html
           cd public
-          branches=$(echo '${{ needs.directories.outputs.dir }}' | jq -r '.[]')
-          echo $branches
+          projects=$(echo '${{ needs.directories.outputs.dir }}' | jq -r '.[]')
           i=0
-          for branch in ${branches}
+          for branch in ${projects}
           do
             mkdir -p -- $branch
-            mv ../$i/* ./$branch
+            mv ../projects/$i/* ./$branch
 
             echo "<li><a href=\"./CV/${branch}\">${branch}</a></li>" >> index.html
 
