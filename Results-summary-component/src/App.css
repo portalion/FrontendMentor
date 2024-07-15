@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "hanken-grotesk";
+  src: url("/fonts/HankenGrotesk-VariableFont_wght.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-weight: 500;
+  font-family: hanken-grotesk;
+  display: flex;
+  height: 100%;
+  background-color: white;
+}
+
+body {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+
+  box-shadow: 0px 0px 30px -15px hsl(252, 100%, 67%);
+  border-radius: 1.6rem;
+  background-color: white;
+}
+
+.result,
+.summary {
+  flex: 1 1 50%;
+}
+
+.result {
+  background: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+  gap: 1rem;
+  align-items: center;
+  color: hsl(241, 100%, 89%);
+}
+
+.circle-score {
+  border-radius: 50%;
+  width: 65%;
+  aspect-ratio: 1;
+  background: linear-gradient(to bottom, hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: hsl(241, 100%, 89%);
+}
+
+.circle-score .score {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: hsl(221, 100%, 96%);
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: hsl(224, 30%, 27%);
+  padding: 2rem;
+}
+
+.category-label {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  align-items: center;
+}
+
+.category-label__score {
+  font-weight: 700;
+  text-align: end;
+  flex: 1;
+  color: gray;
+}
+
+.category-label__score span {
+  color: hsl(224, 30%, 27%);
+}
+
+.summary__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.result__subtitle {
+  font-size: 1.8rem;
+  color: hsl(221, 100%, 96%);
+}
+
+.summary__button {
+  all: unset;
+  padding: 0.6rem;
+  color: hsl(221, 100%, 96%);
+  text-align: center;
+  border-radius: 2rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  background-color: hsl(224, 30%, 27%);
+
+  position: relative;
+}
+
+.summary__button:hover {
+  background: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+}
