@@ -33,12 +33,29 @@ jobs:
         run: echo "dir=$(ls -d */ | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
         # Define step output named dir base on ls command transformed to JSON thanks to jq
         
-  deploy:
+  build:
     runs-on: ubuntu-latest
     needs: [directories] # Depends on previous job
     strategy:
       matrix:
         dir: ${{fromJson(needs.directories.outputs.dir)}} # List matrix strategy from directories dynamically
+    defaults:
+      run:
+        working-directory: ./${{matrix.dir}}
     steps:
-      - run: echo ${{matrix.dir}}
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Build
+        run: |
+          npm install
+          npm run build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ strategy.job-index }}
+          path: dist/cv/browser/
      
