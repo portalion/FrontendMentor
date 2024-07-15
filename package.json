@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "predeploy": "cd Results-summary-component && npm run build",
+    "deploy": "gh-pages -d Results-summary-component/dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  }
+}
