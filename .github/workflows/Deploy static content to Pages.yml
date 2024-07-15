@@ -57,4 +57,48 @@ jobs:
         with:
           name: ${{ strategy.job-index }}
           path: ${{matrix.dir}}/dist/
-     
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs:
+      - directories
+      - build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - run: gh run download ${{ vars.GITHUB_RUN_ID }} --dir branches
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create public folder
+        run: |
+          mkdir public
+          mv .github/workflows/index.html ./public/index.html
+          cd public
+          branches=$(echo '${{ needs.build_matrix.outputs.json_branches }}' | jq -r '.[]')
+          i=0
+          for branch in ${branches}
+          do
+            mkdir -p -- $branch
+            mv ../branches/$i/* ./$branch
+
+            echo "<li><a href=\"./CV/${branch}\">${branch}</a></li>" >> index.html
+
+            i=$((i+1))
+          done
+          cat ../.github/workflows/index_suffix.html >> index.html
+          ls -lR
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./public/
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+      
