@@ -1,7 +1,7 @@
-import imgUrl1 from "../assets/images/icon-reaction.svg"
-import imgUrl2 from "../assets/images/icon-memory.svg"
-import imgUrl3 from "../assets/images/icon-verbal.svg"
-import imgUrl4 from "../assets/images/icon-visual.svg"
+import imgUrl1 from "../assets/icon-reaction.svg"
+import imgUrl2 from "../assets/icon-memory.svg"
+import imgUrl3 from "../assets/icon-verbal.svg"
+import imgUrl4 from "../assets/icon-visual.svg"
 
 export const data = [
     {
