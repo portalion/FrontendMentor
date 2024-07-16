@@ -1,4 +1,4 @@
-import data from '../data/data.json'
+import {data} from '../data/data'
 import ResultCard from './ResultCard';
 import Summary from './Summary';
 
