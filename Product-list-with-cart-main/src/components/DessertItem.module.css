@@ -1,0 +1,90 @@
+.item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.imageContainer {
+    position: relative;
+    margin-bottom: 1rem;
+
+    .image {
+        display: block;
+        border-radius: 1rem;
+    }
+
+    .button {
+        all: unset;
+        border: 1px solid var(--Rose500);
+        padding: 0.3rem 1.3rem;
+        border-radius: 1.3rem;
+        background-color: var(--Rose50);
+        font-weight: 600;
+        text-wrap: nowrap;
+        cursor: pointer;
+        user-select: none;
+
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        translate: -50% 50%;
+
+        transition: border-color 200ms ease-in-out, color 200ms ease-in-out;
+
+        .icon {
+            background-image: url('../assets/icons/icon-add-to-cart.svg');
+            background-repeat: no-repeat;
+            width: 1.2rem;
+            height: 1.2rem;
+            background-size: cover;
+        }
+    }
+
+    .button:hover {
+        border-color: var(--Red);
+        color: var(--Red);
+    }
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    .category {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: var(--Rose500)
+    }
+
+    .name {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .price {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--Red);
+    }
+}
+
+@media (min-width: 375px) {
+    .item {
+        min-width: max-content;
+        flex-shrink: 0;
+    }
+
+    .imageContainer {
+        max-width: 210px;
+
+        .image {
+            aspect-ratio: 1;
+        }
+    }
+}

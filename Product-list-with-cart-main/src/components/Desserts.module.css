@@ -1,0 +1,41 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem 0.3rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    color: var(--Rose900);
+}
+
+.desserts {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2rem;
+}
+
+.dessert-items {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 3rem;
+}
+
+@media (min-width: 375px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .dessert-items {
+        flex-direction: row;
+    }
+}
