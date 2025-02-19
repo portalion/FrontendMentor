@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "jakarta-sans";
+  src: url("./assets/PlusJakartaSans-VariableFont_wght.ttf");
+  font-weight: 100 900; /* Defines the variable range */
+  font-display: swap;
+}
+
+:root {
+  font-family: jakarta-sans;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
+}
+
+@theme {
+  --color-lime-primary: hsl(61, 70%, 52%);
+  --color-red-primary: hsl(4, 69%, 50%);
+}
